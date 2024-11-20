@@ -30,7 +30,7 @@ export function EditProductModal({
   }, [selectedProduct, isOpen]);
 
   const handleEdit = async () => {
-    const price = parseFloat(editValues.productprice.replace(',', '.').replace(/[^\d.-]/g, ''));
+    const price = parseFloat(String(editValues.productprice).replace(',', '.'));
 
     if (isNaN(price) || price <= 0) {
       alert("Preço inválido! Deve ser maior que 0.");
@@ -87,8 +87,10 @@ export function EditProductModal({
           onValueChange={(value) => setEditValues({ ...editValues, productprice: value || '' })}
           className="border border-gray-300 rounded w-full p-2 mt-1 mb-4"
           placeholder="Digite o preço do produto"
+          decimalsLimit={2}
           decimalScale={2}
-          prefix="R$ "
+          decimalSeparator="."
+          groupSeparator=","
           allowNegativeValue={false}
         />
 

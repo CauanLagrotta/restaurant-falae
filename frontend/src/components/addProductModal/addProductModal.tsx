@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { AddProductModalProps } from "@/types/types";
-import CurrencyInput from 'react-currency-input-field';
+import CurrencyInput from "react-currency-input-field";
 import Axios from "axios";
 
 export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
   const [values, setValues] = useState({
-    productname: '',
-    productprice: '',
-    productcategory: '',
-    productdescription: '',
-    productImageUrl: '',
+    productname: "",
+    productprice: "",
+    productcategory: "",
+    productdescription: "",
+    productImageUrl: "",
   });
 
   const [listProduct, setListProduct] = useState([]);
   console.log(listProduct);
 
-  const handleChangeValues = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChangeValues = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = event.target;
     setValues((prevValues) => ({
       ...prevValues,
@@ -24,23 +26,26 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
   };
 
   const handleAddProduct = async () => {
-    const productData = {...values, productprice: parseFloat(values.productprice)}
+    const productData = {
+      ...values,
+      productprice: parseFloat(values.productprice.replace(",", ".")),
+    };
 
     try {
-      await Axios.post('http://localhost:3000/api/products', productData);
+      await Axios.post("http://localhost:3000/api/products", productData);
 
-      const response = await Axios.get('http://localhost:3000/api/products');
+      const response = await Axios.get("http://localhost:3000/api/products");
       setListProduct(response.data);
     } catch (error) {
       console.error("Erro ao adicionar produto:", error);
     }
 
     setValues({
-      productname: '',
-      productprice: '',
-      productcategory: '',
-      productdescription: '',
-      productImageUrl: ''
+      productname: "",
+      productprice: "",
+      productcategory: "",
+      productdescription: "",
+      productImageUrl: "",
     });
     onClose();
   };
@@ -66,11 +71,15 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
         <CurrencyInput
           name="productprice"
           value={values.productprice}
-          onValueChange={(value) => setValues({ ...values, productprice: value || '' })}
+          onValueChange={(value) =>
+            setValues({ ...values, productprice: value || "" })
+          }
           className="border border-gray-300 rounded w-full p-2 mt-1 mb-4"
           placeholder="Digite o preço do produto"
+          decimalsLimit={2}
           decimalScale={2}
-          prefix="R$ "
+          decimalSeparator="."
+          groupSeparator=","
           allowNegativeValue={false}
         />
 
@@ -110,10 +119,16 @@ export function AddProductModal({ isOpen, onClose }: AddProductModalProps) {
         </select>
 
         <div className="flex justify-end space-x-2 mt-4">
-          <button onClick={onClose} className="bg-red-500 text-white px-4 py-2 rounded-lg">
+          <button
+            onClick={onClose}
+            className="bg-red-500 text-white px-4 py-2 rounded-lg"
+          >
             Cancelar
           </button>
-          <button onClick={handleAddProduct} className="bg-green-600 text-white px-4 py-2 rounded-lg">
+          <button
+            onClick={handleAddProduct}
+            className="bg-green-600 text-white px-4 py-2 rounded-lg"
+          >
             Adicionar Produto
           </button>
         </div>
