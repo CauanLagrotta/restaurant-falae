@@ -61,14 +61,25 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
 ## Instalação e Configuração
 
 ### Pré-requisitos
-- **Node.js** (versão 16+).
+- **Node.js**
 - **npm**
 - Banco de dados **SQLite3**.
+
+---
+- **Clone este repositório:**
+   ```bash
+     git clone https://github.com/CauanLagrotta/restaurant-falae.git
+   ```
+
 
 ### Passos
 **No VScode:**
 
 ### Backend
+1. Entre na pasta backend:
+    ```bash
+      cd backend
+    ```
 
 **Configure o backend**
 1. Crie um arquivo **.env** na raíz do backend
@@ -81,22 +92,12 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
    - Crie: **BREVO_SMTP_USER** e insira o **Login**.
    - Crie: **BREVO_SMTP_PASS** e insira o **SMTP key**.
 
-1. Clone este repositório:
-   ```bash
-     git clone https://github.com/CauanLagrotta/restaurant-falae.git
-   ```
-
-2. Entre na pasta backend:
-    ```bash
-      cd backend
-    ```
-
-3. Instale as dependências:
+5. Instale as dependências:
    ```bash
       npm install
    ```
 
-4. Execute o backend:
+6. Execute o backend:
     ```bash
       npm run dev
     ```
