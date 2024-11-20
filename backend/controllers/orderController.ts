@@ -58,6 +58,12 @@ export class OrderController {
       const order = await prisma.orders.findUnique({
         where: { id: Number(id) },
         include: {
+          userOrder: {
+            select: {
+              username: true,
+              useraddress: true,
+            },
+          },
           OrderItems: {
             include: {
               productOrder: true,
@@ -75,6 +81,7 @@ export class OrderController {
         totalPrice: order.totalPrice,
         status: order.orderstatus,
         createdAt: order.createdAt,
+        address: order.userOrder.useraddress,
         products: order.OrderItems.map((item: any) => ({
           name: item.productOrder.productname,
           orderquantity: item.orderquantity,
@@ -138,23 +145,29 @@ export class OrderController {
     try {
       const orders = await prisma.orders.findMany({
         include: {
+          userOrder: {
+            select: {
+              username: true,
+              useraddress: true,
+            },
+          },
           OrderItems: {
             include: {
               productOrder: true,
             },
           },
-          userOrder: true,
         },
       });
 
       const formattedOrders = orders.map((order) => ({
         id: order.id,
         user: {
-          id: order.userOrder.id,
           name: order.userOrder.username,
+          address: order.userOrder.useraddress,
         },
         totalPrice: order.totalPrice,
         status: order.orderstatus,
+        address: order.userOrder.useraddress,
         createdAt: order.createdAt,
         products: order.OrderItems.map((item) => ({
           productname: item.productOrder.productname,

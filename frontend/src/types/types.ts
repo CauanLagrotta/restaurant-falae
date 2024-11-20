@@ -61,6 +61,7 @@ export interface Order {
   totalPrice: number;
   status: string;
   createdAt: string;
+  address: string;
   products: OrderProduct[];
 }
 

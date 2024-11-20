@@ -79,6 +79,9 @@ export function Orders() {
               <p className="mb-4">
                 <strong>Total:</strong> R$ {order.totalPrice.toFixed(2)}
               </p>
+              <p className="mb-4">
+                <strong>Endereço:</strong> {order.address}
+              </p>
               <div className="mb-4">
                 <p className="font-bold mb-2">Produtos:</p>
                 <ul className="list-disc ml-6 space-y-2">
