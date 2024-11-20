@@ -7,10 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import Axios from "axios";
-
-interface ResetPasswordValues {
-  password: string;
-}
+import { ResetPasswordValues } from "@/types/types";
 
 const validationSchema = Yup.object({
   password: Yup.string()
@@ -42,7 +39,7 @@ export function ResetPassword() {
         userpassword: values.password,
       }
     ).then((res) => {
-      if (res.data.msg === "Senha atualizada com sucesso") {
+      if (res.data.msg === "Senha alterada com sucesso!") {
         toast.success("Senha atualizada com sucesso", {
           position: "bottom-left",
           autoClose: 3000,
@@ -167,7 +164,7 @@ export function ResetPassword() {
         </Formik>
       </div>
 
-      <ToastContainer position="top-center" autoClose={5000} hideProgressBar />
+      <ToastContainer />
     </div>
   );
 }

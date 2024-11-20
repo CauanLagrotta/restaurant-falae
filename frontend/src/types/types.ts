@@ -91,3 +91,25 @@ export interface CrudUsers{
   useraddress: string;
   staff: number;
 }
+
+export interface FormValuesRegister {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface FormValuesLogin {
+  email: string;
+  password: string;
+}
+
+export interface ResetPasswordValues {
+  password: string;
+}
+
+export interface ForgotValues{
+  email: string;
+}

@@ -3,10 +3,7 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Axios from "axios";
-
-interface ForgotValues{
-  email: string;
-}
+import { ForgotValues } from "@/types/types";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Email inválido").required("Email é obrigatório"),
@@ -22,7 +19,7 @@ export function ForgotPassword() {
     })
       .then((res) => {
         if (
-          res.data.msg === "Email para redefinição de senha enviado com sucesso"
+          res.data.msg === "Email para redefinição de senha enviado com sucesso."
         ) {
           toast.success("Email para redefinição de senha enviado com sucesso", {
             position: "bottom-left",
@@ -99,7 +96,7 @@ export function ForgotPassword() {
         </Formik>
       </div>
 
-      <ToastContainer position="top-center" autoClose={5000} hideProgressBar />
+      <ToastContainer  />
     </div>
   );
 }

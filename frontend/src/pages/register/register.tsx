@@ -8,15 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React from "react";
 import Axios from "axios";
+import { FormValuesRegister } from "@/types/types";
 
-interface FormValues {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  password: string;
-  confirmPassword: string;
-}
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Nome é obrigatório"),
@@ -42,7 +35,7 @@ export function Register() {
     setShowConfirmPassword(!showConfirmPassword);
 
   const handleClickRegister = (
-    values: FormValues,
+    values: FormValuesRegister,
     { resetForm }: { resetForm: () => void }
   ) => {
     Axios.post("http://localhost:3000/api/auth/register", {

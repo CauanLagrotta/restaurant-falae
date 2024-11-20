@@ -1,25 +1,9 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Request, Response, NextFunction } from "express";
 import { prisma } from "../db/database";
-
+import { DecodedToken } from "../@types/types";
 dotenv.config();
-
-interface DecodedToken extends JwtPayload {
-  id: number;
-}
-
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: number;
-        username: string;
-        staff: number;
-      };
-    }
-  }
-}
 
 export const verifyUser = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.token;

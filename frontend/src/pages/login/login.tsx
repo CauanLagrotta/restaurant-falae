@@ -7,11 +7,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Axios from "axios";
-
-interface FormValues {
-  email: string;
-  password: string;
-}
+import { FormValuesLogin } from "@/types/types";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Email inválido").required("Email é obrigatório"),
@@ -30,7 +26,7 @@ export function Login() {
   };
 
   const handleClickLogin = (
-    values: FormValues,
+    values: FormValuesLogin,
     { resetForm }: { resetForm: () => void }
   ) => {
     Axios.post("http://localhost:3000/api/auth/login", {
