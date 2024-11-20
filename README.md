@@ -75,8 +75,8 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
 ### Passos
 **No VScode:**
 
-### Backend
-1. Entre na pasta backend:
+## Backend
+- **Entre na pasta backend:**
     ```bash
       cd backend
     ```
@@ -102,6 +102,8 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
       npm run dev
     ```
 
+**Backend rodando em http://localhost:3000**
+
 ## Frontend    
 
 1. Abra outro terminal e entre na pasta frontend:
@@ -118,3 +120,5 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
    ```bash
       npm run dev
    ```
+
+**Frontend rodando em http://localhost:5173**
