@@ -69,6 +69,18 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
 **No VScode:**
 
 ### Backend
+
+**Configure o backend**
+1. Crie um arquivo **.env** na raíz do backend
+2. Para fazer a recuperação de senha por e-mail funcionar, entre no site da <a target="_blank" href="https://www.brevo.com/landing/products/?utm_source=adwords_brand&utm_medium=lastclick&utm_content=SendinBlue&utm_extension=&utm_term=brevo%20com&utm_matchtype=e&utm_campaign=20035168739&utm_network=g&km_adid=660340698362&km_adposition=&km_device=c&utm_adgroupid=149273508900&gad_source=1&gclid=CjwKCAiArva5BhBiEiwA-oTnXTGpUAvo35rvgYJl-zop6DhvbXaq3i9MW5KoX-kcVlm23tauR5lDmxoCMAYQAvD_BwE">Brevo.com</a>
+3. Crie uma conta, clique em <a target="_blank" href="https://app.brevo.com/settings/keys/smtp">SMTP & API</a> e pegue os dados de **SMTP server**, **Port**, **Login** e **SMTP key**.
+4. Crie as variáveis dentro do arquivo **.env**:
+   - **TOKEN** e crie um token (ex: restaurant-secret).
+   - Crie: **BREVO_SMTP_HOST** e insira o **SMTP server**.
+   - Crie: **BREVO_SMTP_PORT** e insira a **Port**.
+   - Crie: **BREVO_SMTP_USER** e insira o **Login**.
+   - Crie: **BREVO_SMTP_PASS** e insira o **SMTP key**.
+
 1. Clone este repositório:
    ```bash
      git clone https://github.com/CauanLagrotta/restaurant-falae.git
@@ -88,17 +100,6 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
     ```bash
       npm run dev
     ```
-
-**Configure o backend**
-1. Crie um arquivo **.env** na raíz do backend
-2. Para fazer a recuperação de senha por e-mail funcionar, entre no site da <a target="_blank" href="https://www.brevo.com/landing/products/?utm_source=adwords_brand&utm_medium=lastclick&utm_content=SendinBlue&utm_extension=&utm_term=brevo%20com&utm_matchtype=e&utm_campaign=20035168739&utm_network=g&km_adid=660340698362&km_adposition=&km_device=c&utm_adgroupid=149273508900&gad_source=1&gclid=CjwKCAiArva5BhBiEiwA-oTnXTGpUAvo35rvgYJl-zop6DhvbXaq3i9MW5KoX-kcVlm23tauR5lDmxoCMAYQAvD_BwE">Brevo.com</a>
-3. Crie uma conta, clique em <a target="_blank" href="https://app.brevo.com/settings/keys/smtp">SMTP & API</a> e pegue os dados de **SMTP server**, **Port**, **Login** e **SMTP key**.
-4. Crie as variáveis dentro do arquivo **.env**:
-   - **TOKEN** e crie um token (ex: restaurant-secret).
-   - Crie: **BREVO_SMTP_HOST** e insira o **SMTP server**.
-   - Crie: **BREVO_SMTP_PORT** e insira a **Port**.
-   - Crie: **BREVO_SMTP_USER** e insira o **Login**.
-   - Crie: **BREVO_SMTP_PASS** e insira o **SMTP key**.
 
 ## Frontend    
 
