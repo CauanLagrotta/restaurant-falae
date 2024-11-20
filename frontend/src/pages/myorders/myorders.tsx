@@ -7,6 +7,17 @@ export function MyOrders() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const deleteOrder = async (orderId: number) => {
+    try {
+      await Axios.delete(`http://localhost:3000/api/orders/${orderId}`, {
+        withCredentials: true,
+      });
+      setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -59,6 +70,15 @@ export function MyOrders() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => deleteOrder(order.id)}
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                  >
+                    Excluir Pedido
+                  </button>
+                </div>
               </div>
             </li>
           ))}
