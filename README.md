@@ -91,6 +91,10 @@ Este projeto é uma aplicação web para gerenciamento de pedidos em um restaura
    - Crie: **BREVO_SMTP_PORT** e insira a **Port**.
    - Crie: **BREVO_SMTP_USER** e insira o **Login**.
    - Crie: **BREVO_SMTP_PASS** e insira o **SMTP key**.
+   - Adicione também o seguinte trecho:
+    ```bash
+      DATABASE_URL="file:./dev.db"
+    ```
 
 5. Instale as dependências:
    ```bash
