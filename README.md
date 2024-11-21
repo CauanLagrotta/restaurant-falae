@@ -2,6 +2,8 @@
 
 Este projeto é uma aplicação web para gerenciamento de pedidos em um restaurante, com funcionalidades distintas para **administradores** e **usuários**. A aplicação permite realizar operações no carrinho, gerenciar produtos e pedidos, e conta com recursos completos de autenticação.
 
+<img src="./.github/image.png" alt="imagem da tela inicial na visão de um cliente">
+
 ## Funcionalidades
 
 ### **Usuários**
