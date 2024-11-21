@@ -19,6 +19,7 @@ export function Home() {
   const [isLearnMoreOpen, setIsLearnMoreOpen] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [staff, setStaff] = useState<number>(0);
+  const [auth, setAuth] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
@@ -91,6 +92,22 @@ export function Home() {
   };
 
   useEffect(() => {
+    Axios.get("http://localhost:3000/api/auth/header")
+      .then((res) => {
+        if (res.data.msg === "Autenticação bem-sucedida") {
+          setAuth(true);
+          setStaff(res.data.user.staff);
+        } else {
+          setAuth(false);
+          setStaff(0);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setAuth(false);
+        setStaff(0);
+      });
+
     fetchProducts();
   }, []);
 
@@ -217,7 +234,7 @@ export function Home() {
                 Saiba Mais
               </button>
 
-              {staff === 0 && (
+              {auth && staff === 0 && (
                 <button
                   className="bg-green-700 text-white px-4 py-2 rounded-lg"
                   onClick={() => handleAddToCart(product)}

@@ -136,8 +136,7 @@ export function Crud() {
           className="block w-full p-2 border rounded"
         >
           <option value="" disabled>
-            {" "}
-            Selecione o cargo do usuário{" "}
+            Selecione o cargo do usuário
           </option>
           <option value={1}>Administrador</option>
           <option value={0}>Usuário comum</option>
